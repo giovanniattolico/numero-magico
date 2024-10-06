@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function generateRandomInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+function guessTheNumberGame() {
+    const randomNumber = generateRandomInteger(1, 100);
+    let attempts = 5;
+
+    while (attempts > 0) {
+        let userInput = prompt("Inserisci un numero tra 1 e 100:");
+        let userNumber = parseInt(userInput);
+
+        
+        if (isNaN(userNumber) || userNumber < 1 || userNumber > 100) {
+            console.log("Per favore, inserisci un numero valido tra 1 e 100.");
+            continue;
+        }
+
+        if (userNumber > randomNumber) {
+            console.log("Troppo grande");
+        } else if (userNumber < randomNumber) {
+            console.log("Troppo piccolo");
+        } else {
+            console.log("Bravo, hai vinto!");
+            return;
+        }
+
+        attempts--;
+        console.log(`Tentativi rimasti: ${attempts}`);
+    }
+
+    console.log(`Hai esaurito i tentativi. Il numero era: ${randomNumber}`);
+}
+
+
+guessTheNumberGame();
+
+</script>
+    
+</body>
+</html>
